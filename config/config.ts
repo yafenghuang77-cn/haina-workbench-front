@@ -5,6 +5,11 @@ import routes from './routes';
 const { REACT_APP_ENV = 'dev' } = process.env;
 
 export default defineConfig({
+  base: 'haina-workbench',
+  history: {
+    type: 'browser',
+  },
+  jsMinifier: 'esbuild',
   antd: {},
   access: {},
   model: {},
@@ -15,6 +20,12 @@ export default defineConfig({
   },
   routes,
   proxy: proxy[REACT_APP_ENV as keyof typeof proxy],
-  npmClient: 'npm',
   utoopack: {},
+  exportStatic: {},
+  fastRefresh: true,
+  define: {
+    'process.env.REACT_APP_ENV': process.env.REACT_APP_ENV || 'prod',
+  },
+  mfsu: {},
+  ignoreMomentLocale: true,
 });
